@@ -2,7 +2,7 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "python manage.py migrate && python manage.py seed_crops && gunicorn agrosmart.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+startCommand = "python manage.py migrate && python manage.py seed_crops && python manage.py collectstatic --noinput && gunicorn agrosmart.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
 healthcheckPath = "/api/crops/"
 healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
