@@ -6,3 +6,7 @@ startCommand = "python manage.py migrate && python manage.py seed_crops && pytho
 healthcheckPath = "/api/crops/"
 healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
+
+Then add the password as an environment variable in Railway **Variables** tab:
+
+DJANGO_SUPERUSER_PASSWORD = YourPassword123!
