@@ -2,11 +2,7 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "python manage.py migrate && python manage.py seed_crops && python manage.py collectstatic --noinput && gunicorn agrosmart.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+startCommand = "python manage.py migrate && python manage.py seed_crops && python create_superuser.py && gunicorn agrosmart.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
 healthcheckPath = "/api/crops/"
 healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
-
-Then add the password as an environment variable in Railway **Variables** tab:
-
-DJANGO_SUPERUSER_PASSWORD = YourPassword123!
